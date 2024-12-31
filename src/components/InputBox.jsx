@@ -6,7 +6,7 @@ const InputBox = ({ type, className }) => {
   return (
     <input
       type={type}
-      className={`rounded ${className}`}
+      className={`w-full px-4 py-2 bg-gray-100 text-gray-700 rounded-l border border-gray-300 ${className}`}
     />
   );
 };
