@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from "react";
-import ButtonLink from "./Buttons/ButtonLink";
+import ButtonLink from "../Buttons/ButtonLink";
 
-const NavbarLoggedOut = ({ setIsLoggedIn }) => {
+const NavbarLoggedOut = () => {
   return (
     <>
       <ButtonLink to="/pricing">
@@ -14,7 +14,6 @@ const NavbarLoggedOut = ({ setIsLoggedIn }) => {
       </ButtonLink>
       <ButtonLink
         to="/login"
-        onClick={() => setIsLoggedIn(true)}
         className="border-green-900 border px-4 py-2 text-[15px] rounded text-green-900 font-bold"
       >
         Log In

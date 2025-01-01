@@ -61,7 +61,7 @@ const NavbarLoggedIn = ({ setIsLoggedIn }) => {
         <ul
           className={`absolute ${
             viewProfile ? "block" : "hidden"
-          } mt-2 right-0 bg-white text-black p-2 rounded shadow-lg w-max space-y-2`}
+          } mt-2 right-0 bg-white text-black p-2 rounded shadow-lg w-max space-y-2 z-50`}
         >
           <li>
             <Link to="/profile">My Profile</Link>

@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import CourseDetail from "./pages/CourseDetail";
@@ -9,19 +9,13 @@ import Signup from "./pages/Signup";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import Pricing from "./pages/Pricing";
-import { useState } from "react";
 import Forum from "./pages/Forum";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] =
-    useState(false);
   return (
     <>
       <div className="flex flex-col min-h-screen">
-        <Navbar
-          isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}
-        />
+        <Navbar />
         <main className="flex-grow">
           <Routes>
             <Route
