@@ -82,7 +82,7 @@ const Pricing = () => {
   ];
 
   return (
-    <div className="mx-5 bg-gray-100 py-8">
+    <div className="mx-5 mt-7 bg-gray-100 py-8">
       {/* Pricing Cards Section */}
       <div className="text-center my-8 ">
         <h1 className="text-3xl font-semibold text-gray-800">
@@ -95,7 +95,7 @@ const Pricing = () => {
       </div>
 
       <div className="flex justify-center items-center min-h-screen">
-        <div className="flex gap-5 items-start">
+        <div className="flex flex-col lg:flex-row gap-5 items-start">
           <PricingCard
             planName={plans[0].planName}
             price="49"

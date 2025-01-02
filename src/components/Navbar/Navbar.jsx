@@ -26,7 +26,7 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div className="fixed top-0 left-0 w-full z-50 bg-white">
       {/* Sidebar */}
       <SideBar
         isOpen={toggle}
@@ -34,7 +34,7 @@ const Navbar = () => {
       />
 
       {/* Navbar */}
-      <nav className="flex justify-between items-center p-4 text-green-700">
+      <nav className="flex justify-between text-[14px] items-center p-4 text-green-700">
         {/* Left Section: Logo and Menu */}
         <div className="flex items-center space-x-4 gap-5">
           <button
@@ -49,10 +49,10 @@ const Navbar = () => {
         </div>
 
         {/* Right Section: Search Bar and Auth Links */}
-        <div className="flex items-center md:justify-center justify-end flex-grow md:space-x-4 space-x-7">
+        <div className="flex  items-center md:justify-center justify-end flex-grow md:space-x-4 space-x-7">
           <ShoppingCart className="lg:hidden text-black" />
           <SearchBar className="w-full md:w-auto" />
-          <div className="hidden md:flex items-center space-x-8 font-bold">
+          <div className="hidden md:flex items-center space-x-6 font-semibold">
             {isLoggedIn ? (
               <NavbarLoggedIn />
             ) : (

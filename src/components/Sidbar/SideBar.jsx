@@ -10,7 +10,8 @@ import ButtonLink from "../Buttons/ButtonLink";
 import { IoCloseOutline } from "react-icons/io5";
 
 const SideBar = ({ isOpen, closeSideMenu }) => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, setIsLoggedIn } =
+    useContext(AuthContext);
 
   useEffect(() => {
     if (isOpen) {
@@ -53,13 +54,44 @@ const SideBar = ({ isOpen, closeSideMenu }) => {
             <IoCloseOutline className="w-9 h-9" />
           </button>
         </div>
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full ">
           {isLoggedIn ? (
-            <div className="logged-in">
+            // logged in options
+            <div className="logged-in flex flex-col">
               {" "}
-              {/* Optional logged-in content */}{" "}
+              <div className="flex flex-col space-y-3 mx-4">
+                <ButtonLink to="/my-courses">
+                  My Courses
+                </ButtonLink>
+                <ButtonLink to="/dashboard">
+                  Dashboard
+                </ButtonLink>
+                <ButtonLink to="/community">
+                  Forum
+                </ButtonLink>
+              </div>
+              <div className="auth-btn flex flex-col gap-2 mx-4 my-4">
+                <ButtonLink
+                  onClick={closeSideMenu}
+                  to="/profile"
+                  className="border-green-900 border px-4 py-2 text-[15px] rounded text-green-900 text-center font-bold"
+                >
+                  Profile
+                </ButtonLink>
+                <ButtonLink
+                  onClick={() => {
+                    closeSideMenu;
+                    setIsLoggedIn(false);
+                  }}
+                  to="/"
+                  className="bg-green-600 px-4 py-2 rounded text-center text-white"
+                >
+                  Log Out
+                </ButtonLink>
+              </div>{" "}
             </div>
           ) : (
+            // logged out options
             <div className="logged-out flex flex-col">
               <div>
                 <SidebarOptions
@@ -77,14 +109,16 @@ const SideBar = ({ isOpen, closeSideMenu }) => {
               </div>
 
               {/* Auth buttons at the bottom */}
-              <div className="auth-btn flex flex-col gap-2 mx-2">
+              <div className="auth-btn flex flex-col gap-2 mx-2 my-3">
                 <ButtonLink
+                  onClick={closeSideMenu}
                   to="/login"
                   className="border-green-900 border px-4 py-2 text-[15px] rounded text-green-900 text-center font-bold"
                 >
                   Log In
                 </ButtonLink>
                 <ButtonLink
+                  onClick={closeSideMenu}
                   to="/signup"
                   className="bg-green-600 px-4 py-2 rounded text-center text-white"
                 >

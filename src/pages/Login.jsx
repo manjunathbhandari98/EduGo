@@ -30,7 +30,7 @@ const Login = () => {
   const onLogin = (data) => {
     // Validate credentials (example logic)
     if (
-      data.email === "manjunath@gmail.com" &&
+      data.email === "manju@gmail.com" &&
       data.password === "admin1234"
     ) {
       login();

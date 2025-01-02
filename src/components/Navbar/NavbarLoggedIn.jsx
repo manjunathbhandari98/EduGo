@@ -7,6 +7,8 @@ import {
   IoMdNotificationsOutline,
   IoMdNotifications,
 } from "react-icons/io";
+import ProfileMenu from "./ProfileMenu";
+import Notifications from "../Notifications";
 
 const NavbarLoggedIn = ({ setIsLoggedIn }) => {
   const [viewProfile, setViewProfile] =
@@ -28,59 +30,68 @@ const NavbarLoggedIn = ({ setIsLoggedIn }) => {
 
   return (
     <>
-      <Link to="/my-courses">My Courses</Link>
-      <Link to="/dashboard">Dashboard</Link>
-      <Link to="/community">Forum</Link>
+      <Link
+        to="/my-courses"
+        className="text-gray-700 hover:text-green-600"
+      >
+        My courses
+      </Link>
+      <Link
+        to="/dashboard"
+        className="text-gray-700 hover:text-green-600"
+      >
+        Dashboard
+      </Link>
+      <Link
+        to="/community"
+        className="text-gray-700 hover:text-green-600"
+      >
+        Forum
+      </Link>
       <Link
         to="/cart"
-        className="relative text-[25px]"
+        className="relative text-[25px] text-black"
       >
         <LuShoppingCart />
       </Link>
+
+      {/* Notification Button */}
       <div
         className="relative text-[25px]"
         onClick={notificationTapped}
       >
         {!isNotificationTapped ? (
-          <button className="focus:outline-none">
+          <button className="focus:outline-none text-black">
             <IoMdNotificationsOutline />
           </button>
         ) : (
-          <button className="focus:outline-none">
+          <button className="focus:outline-none text-green-700">
             <IoMdNotifications />
           </button>
         )}
       </div>
+
+      {/* Conditional Notification Popup */}
+      {isNotificationTapped && (
+        <div className="absolute top-20 right- w-80 p-4 bg-white border rounded-lg shadow-lg z-50">
+          <Notifications />{" "}
+          {/* This will display the Notifications component */}
+        </div>
+      )}
+
       <div className="relative">
         <button
           onClick={toggleProfileMenu}
-          className="focus:outline-none bg-green-900 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center"
+          className="focus:outline-none bg-green-800 text-white rounded-full p-3 w-9 h-9 flex items-center justify-center hover:bg-green-700 transition-colors"
         >
           M
         </button>
-        <ul
-          className={`absolute ${
-            viewProfile ? "block" : "hidden"
-          } mt-2 right-0 bg-white text-black p-2 rounded shadow-lg w-max space-y-2 z-50`}
-        >
-          <li>
-            <Link to="/profile">My Profile</Link>
-          </li>
-          <li>
-            <Link to="/settings">Settings</Link>
-          </li>
-          <li>
-            <Link
-              onClick={() => {
-                setIsLoggedIn(false);
-                setViewProfile(false); // Hide the profile menu
-              }}
-              to="/"
-            >
-              Logout
-            </Link>
-          </li>
-        </ul>
+        {/* Profile Menu Popup */}
+        <ProfileMenu
+          setIsLoggedIn={setIsLoggedIn}
+          viewProfile={viewProfile}
+          toggleProfileMenu={toggleProfileMenu}
+        />
       </div>
     </>
   );
